@@ -7,11 +7,24 @@ namespace backend.wwwapi.Endpoints
     {
         public static void ConfigureCatAPI(this WebApplication app)
         {
+            app.MapGet("/", GetIndex);
             var cats = app.MapGroup("cats");
             cats.MapGet("/", GetCats);
             cats.MapPost("/", AddCat);
             cats.MapPut("/{id}", UpdateCat);
             cats.MapDelete("/{id}", DeleteCat);
+        }
+
+        private static async Task<IResult> GetIndex(IDatabaseRepository<Cat> repository)
+        {
+            try
+            {
+                return Results.Ok("Working");
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
         }
 
         private static async Task<IResult> GetCats(IDatabaseRepository<Cat> repository)

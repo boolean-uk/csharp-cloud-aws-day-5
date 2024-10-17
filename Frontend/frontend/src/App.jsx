@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from './consts';
+import './App.css'
 
 function App() {
   const [cats, setCats] = useState([]);
@@ -20,7 +21,7 @@ function App() {
   // Handle updating cats
   const handleRatingChange = (id, number) => {
     // Find the cat's current rating
-    const catRating = cats.find(cat => cat.id === id);
+    const catRating = cats.find(cat => cat.id === id).rating;
     fetch(`${API_URL}/cats/${id}`, {
       method: "PUT",
       headers: {
@@ -147,7 +148,7 @@ function App() {
           <li
             key={cat.id}
           >
-            {cat.name} | Age: {cat.age}
+            {cat.name} | Age: {cat.age} |
             <button
               disabled={isFetching}
               onClick={() => handleRatingChange(cat.id, 1)}>

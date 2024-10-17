@@ -123,11 +123,53 @@ Now both the skeleton for the backend and frontend should be set up.
    ```bash
    npm run build
    ```
-   -  
-  
-   
+
+8. Deploy your Frontend
+   - Navigate to [S3 Bucket](https://eu-north-1.console.aws.amazon.com/s3/home?region=eu-north-1)
+   - Click `Create bucket` (All options not mentioned should be left the same as they are)
+   - General configuration:
+     - Enter bucket name (e.g `{name}-bucket`)
+   - Block Public Access settings for this bucket:
+     - Uncheck `Block all public access`
+     - Check `I acknowledge`
+   - Click `Create bucket`
+   -----------------------------
+   - Navigate to the bucket you created and click on it
+     - Click `Upload`
+        - Click `Add files`
+           - Select both `index.html` and `vite.svg` in your `dist` folder in the frontend and hit enter.
+        - Click `Add folder`
+          - Select the `assets` folder in your `dist` folder and hit enter.
+    - Click `Upload`
+   - Navigate to `Properties`
+     - Find `Static website hosting` and Click `Edit`
+       - Select `Enable`
+       - Type `index.html` in `Index document`
+       - Click `Save changes`
+   - Navigate to `Permissions`
+     - Find `Bucket policy` and Click `Edit`
+       - Copy this code into the Policy:
+       ```bash
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "PublicReadGetObject",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": "s3:GetObject",
+              "Resource": "arn:aws:s3:::{BucketName}/*"
+            }
+          ]
+        }
+       ```
+       - Click `Save changes`
+   - Navigate to `Properties`
+     - Find `Static website hosting`
+       - `Bucket website endpoint` contains the URL for your deployed Frontend. 
 
 ## Introduction
+
 
 ## Technical Designs
 
