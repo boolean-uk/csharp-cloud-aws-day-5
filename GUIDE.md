@@ -10,15 +10,16 @@ and for setting up SQS/SNS.
 Backend PizzaShop API written in C#/.NET (Frontend TBA).
 
 ## Technical Designs
-Users of the PizzaShop API can create and view customers, pizzas and orders.
+Users of the PizzaShop API can create and view customers, pizzas and orders. (Links won't work
+after AWS instance gets removed...)
 
 Endpoints:
 
 + ***[/](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/)*** Root directory
 + ***[/customers](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/customers)*** Post/Get for customers
-+ ***/pizzas*** Post/Get for pizzas
-+ ***/processorders*** Post order to queue, Get orders to process
-+ ***/vieworders*** View the orders that have been processed (they are in the db)
++ ***[/pizzas](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/pizzas)*** Post/Get for pizzas
++ ***[/processorders](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/processorders)*** Post order to queue, Get orders to process
++ ***[/vieworders](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/vieworders)*** View the orders that have been processed (they are in the db)
 
 ## Technical Descriptions
 The orders work through a SQS/SNS queueing system, where an order gets placed in the queue from post, and the orders
