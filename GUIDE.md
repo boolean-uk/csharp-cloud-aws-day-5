@@ -15,7 +15,7 @@ Users of the PizzaShop API can create and view customers, pizzas and orders.
 Endpoints:
 
 + ***[/](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/)*** Root directory
-+ ***/customers*** Post/Get for customers
++ ***[/customers](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/customers)*** Post/Get for customers
 + ***/pizzas*** Post/Get for pizzas
 + ***/processorders*** Post order to queue, Get orders to process
 + ***/vieworders*** View the orders that have been processed (they are in the db)
