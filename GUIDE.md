@@ -18,7 +18,7 @@ Endpoints:
 + ***[/](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/)*** Root directory
 + ***[/customers](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/customers)*** Post/Get for customers
 + ***[/pizzas](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/pizzas)*** Post/Get for pizzas
-+ ***[/processorders](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/processorders)*** Post order to queue, Get orders to process
++ ***[/processorders](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/processorders)*** Post order to queue, Get orders to process (opens slow if no orders in queue)
 + ***[/vieworders](http://aws-day-5-tvaltn-api-env.eba-js3ghmsk.eu-north-1.elasticbeanstalk.com/vieworders)*** View the orders that have been processed (they are in the db)
 
 ## Technical Descriptions
