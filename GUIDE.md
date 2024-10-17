@@ -70,7 +70,62 @@ Now both the skeleton for the backend and frontend should be set up.
    ```
    - If everything was set up correctly you should now be able to connect to your database with `TablePlus` or `Beehive` and see that your `DbSet` items in your DbContext are tables in the database.
 
+5. Zip the backend
+   - Navigate to your folder `backend.wwwapi` in git bash and run this command:
+   ```bash
+   dotnet publish -c Release -o out
+   ```
+   - Go to the `out` folder in File Explorer
+   - Select all files
+     - `Compress to...`
+       - `ZIP`
+   - Name it `backend.zip`
 
+6. Deploy your Backend API
+   - Navigate to  [Elastic Beanstalk](https://eu-north-1.console.aws.amazon.com/elasticbeanstalk/home?region=eu-north-1#/applications)
+   - Click `Create application`
+     - Enter application name (e.g `{name}-backend-api`)
+     - Click `Create`
+   - Click `Create new environment` (All options not mentioned should be left the same as they are)
+   - Environment information:
+     - Enter environment name (e.g `{name}-backend-env`)
+   - Platform:
+     - Set `Platform` to `.NET Core on Linux`
+   - Application Code:
+     - Select `Upload your code`
+     - Set `Version label` to `v1`
+     - Select `Local file`
+     - Select `Choose file` and choose your `backend.zip` file.
+   - Presets:
+     - Select `High availability`
+   - Click `Next`
+    -----------------------------
+   - Scroll down all the way and Click `Skip to review`
+   - Click `Edit` on `Step 4: Configure instance traffic and scaling`
+   - Instances:
+     - Set `Root volume type` to `General Purpose 3(SSD)`
+   - Capacity:
+     - Remove the `t3.small` tag.
+   - Scroll down all the way and Click `Skip to review`
+    -----------------------------
+   - Scroll down all the way and Click `Submit`
+   - Now just wait for the Backend to Deploy!
+   - Note down your environments `Domain`
+
+7. Prepare the Frontend
+   - Create a .env file in your frontend that contains:
+   ```bash
+   VITE_ENDPOINT_URL=http://{Domain}
+   ``` 
+   - Make sure the above url ends with `.com` and not `.com/`
+   - Finish writing the code of the frontend that links to your backend.
+   - Run this command to build the frontend:
+   ```bash
+   npm run build
+   ```
+   -  
+  
+   
 
 ## Introduction
 
