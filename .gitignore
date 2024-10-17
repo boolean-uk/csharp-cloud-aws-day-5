@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 .appsettings.json
+/Backend/backend.wwwapi/appsettings.json
