@@ -20,6 +20,7 @@ namespace exercise.pizzashopapi.EndPoints
         public static void ConfigurePizzaShopApi(this WebApplication app)
         {
             var shop = app.MapGroup("");
+            shop.MapGet("/", ApiGet);
             shop.MapPost("/orders", CreateOrder);
             shop.MapGet("/processorders", ProcessOrders);
             shop.MapGet("/vieworders", GetOrders);
@@ -29,6 +30,12 @@ namespace exercise.pizzashopapi.EndPoints
 
             shop.MapPost("/customers", CreateCustomer);
             shop.MapGet("/customers", GetCustomers);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public static IResult ApiGet()
+        {
+            return TypedResults.Ok("API Works");
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
