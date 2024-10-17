@@ -1,13 +1,25 @@
 # Project Guide
 
 ## Setup
-This project is running on Elastic Beanstalk, with an RDS database, with a SQS/SNS queueing system.
+Backend running on Elastic Beanstalk, with an RDS database, with a SQS/SNS queueing system.
+
+Follow the references for hosting this application on Elastic Beanstalk, for creating an RDS database,
+and for setting up SQS/SNS.
 
 ## Introduction
-Backend PizzaShop API written in C#/.NET, frontend hosted by Swagger.
+Backend PizzaShop API written in C#/.NET (Frontend TBA).
 
 ## Technical Designs
 Users of the PizzaShop API can create and view customers, pizzas and orders.
+
+Endpoints:
+
++ ***/*** Root directory
++ ***/customers*** Post/Get for customers
++ ***/pizzas*** Post/Get for pizzas
++ ***/orders*** Post order to queue
++ ***/processorders*** Process the orders in queue
++ ***/vieworders*** View the orders in queue
 
 ## Technical Descriptions
 The orders work through a SQS/SNS queueing system, where an order gets placed in the queue from post, and the orders
