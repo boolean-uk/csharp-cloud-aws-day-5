@@ -17,9 +17,8 @@ Endpoints:
 + ***/*** Root directory
 + ***/customers*** Post/Get for customers
 + ***/pizzas*** Post/Get for pizzas
-+ ***/orders*** Post order to queue
-+ ***/processorders*** Process the orders in queue
-+ ***/vieworders*** View the orders that have been processed
++ ***/processorders*** Post order to queue, Get orders to process
++ ***/vieworders*** View the orders that have been processed (they are in the db)
 
 ## Technical Descriptions
 The orders work through a SQS/SNS queueing system, where an order gets placed in the queue from post, and the orders

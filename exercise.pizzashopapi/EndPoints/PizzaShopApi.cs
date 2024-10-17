@@ -21,7 +21,7 @@ namespace exercise.pizzashopapi.EndPoints
         {
             var shop = app.MapGroup("");
             shop.MapGet("/", ApiGet);
-            shop.MapPost("/orders", CreateOrder);
+            shop.MapPost("/processorders", CreateOrder);
             shop.MapGet("/processorders", ProcessOrders);
             shop.MapGet("/vieworders", GetOrders);
 
