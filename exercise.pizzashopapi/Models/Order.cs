@@ -8,7 +8,7 @@ namespace exercise.pizzashopapi.Models
         Prepared = 2,
         Cooked = 3,
         Transit = 4,
-        Delivered = 5
+        Processed = 5
     }
 
     [Table("orders")]

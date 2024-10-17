@@ -19,7 +19,7 @@ Endpoints:
 + ***/pizzas*** Post/Get for pizzas
 + ***/orders*** Post order to queue
 + ***/processorders*** Process the orders in queue
-+ ***/vieworders*** View the orders in queue
++ ***/vieworders*** View the orders that have been processed
 
 ## Technical Descriptions
 The orders work through a SQS/SNS queueing system, where an order gets placed in the queue from post, and the orders

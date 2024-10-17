@@ -52,6 +52,8 @@ namespace exercise.pizzashopapi.EndPoints
 
             var response = await sqs.ReceiveMessageAsync(request);
 
+            var resultOrders = new List<Order>();
+
             foreach (var message in response.Messages)
             {
                 Order? order = null;
@@ -74,12 +76,25 @@ namespace exercise.pizzashopapi.EndPoints
 
                 // Process order (e.g., update inventory)
                 order!.Status = (PizzaStatus) 5;
-                var result = await repository.Create([], order!);
+                var result = await repository.Create(["Customer", "Pizza"], order!);
+                resultOrders.Add(result); // add this to our resultorders list that we render
 
                 // Delete message after processing
                 await sqs.DeleteMessageAsync(_queueUrl, message.ReceiptHandle);
             }
-            return TypedResults.Ok(new { Status = $"{response.Messages.Count()} Orders have been processed" });
+            if (resultOrders.Count == 0)
+            {
+                return TypedResults.Ok("0 Orders have been added");
+            }
+
+            var resultDTO = new List<OrderDTO>();
+            foreach (var res in resultOrders)
+            {
+                resultDTO.Add(new OrderDTO() { Customer = res.Customer, Pizza = res.Pizza, Status = res.Status.ToString() });
+            }
+
+
+            return TypedResults.Ok(resultDTO);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
