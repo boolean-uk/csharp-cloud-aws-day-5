@@ -46,7 +46,7 @@ Now both the skeleton for the backend and frontend should be set up.
      - Change the name of `DB instance identifier` (e.g `{name}-database`)
      - Set a `Master password`. Remember this!
    - Instance configuration:
-     - Change `db.t4g.micro` to `db.t4.micro`
+     - Change `db.t4g.micro` to `db.t3.micro`
    - Connectivity:
      - Set `Public access` to `Yes`
    - Monitoring:
