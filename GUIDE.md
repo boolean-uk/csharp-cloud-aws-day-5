@@ -55,40 +55,7 @@ To run the application locally after cloning the repository:
 
 ## API Documentation and endpoints
 
-The backend API is structured with aim to fulfill the [API Documentation:](https://boolean-uk.github.io/csharp-api-cinema-challenge/extensions)
-
-**Base API Endpoint:**
-```http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com```
-
-Available API Routes:
-- ```/customers```
-  - Get customers: ```/```
-  - Create customer: ```/```
-  - Get customer by id: ```/{id}```
-  - Update customer: ```/{id}```
-  - Delete customer: ```{id}```
-
-- ```/movies```
-  - Get movies: ```/```
-  - Create movie: ```/```
-  - Get movie by id: ```/{id}```
-  - Update movie: ```/{id}```
-  - Delete movie: ```{id}```
-
-- ```/screenings```
-  - Get screenings: ```/```
-  - Create screening: ```/```
-  - Get screenings by movie: ```/movies/{id}```
-  - Get screening by id: ```/{id}```
-  - Update screenning: ```/{id}```
-  - Delete screening: ```/{id}```
-
-- ```/tickets```
-  - Get tickets: ```/```
-  - Create ticket ```/customers/{id}```
-  - Get tickets by screening: ```/screenings/{id}```
-  - Get ticket by id: ```/{id}```
-  - Delete ticket: ```/{id}```
+The backend API is structured according to the [API Documentation:](http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com/index.html)
 
 **Example:**
 To retrieve customer data:
