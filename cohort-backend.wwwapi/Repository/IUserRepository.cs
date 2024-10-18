@@ -5,7 +5,6 @@ namespace cohort_backend.wwwapi.Repository
     public interface IUserRepository
     {
         Task<IEnumerable<User>> GetUsers();
-        Task<User> GetPrimeUser(int id);
         Task<User> GetUserById(int id);
     }
 }
