@@ -1,5 +1,3 @@
-**Note: Change any headings in this document**
-
 # Project Guide
 
 ## Setup
@@ -169,10 +167,52 @@ Now both the skeleton for the backend and frontend should be set up.
        - `Bucket website endpoint` contains the URL for your deployed Frontend. 
 
 ## Introduction
+Backend + Frontend Cat App Where users can add new cats to the list of cats and then update the rating for each cat.
 
+The backend is written in C# and Deployed using RDS Database + Elastic Beanstalk.
+
+The frontend is written in React (jsx) and Deployed using RDS Database + S3 Bucket.
 
 ## Technical Designs
+# Backend
+The backend can be run using Swagger where you can GET, POST, PUT, and DELETE cat models that are being stored on the RDS Database.
+
+Endpoints are the following:
+
+   - [Root: /](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/) Returns `"Working"` if the API is up and running.
+   - [GET: /cats](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/cats) Retrieves a list of all cats.
+   - [POST: /cats](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/cats) Adds a new cat to the database.
+   - [PUT: /cats{id}](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/cats) Updates the rating of an existing cat found on the given `{id}`.
+   - [DELETE: /cats{id}](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/cats) Deletes an existing cat found on the given `{id}`.
+
+# Frontend
+The frontend can be run using Vite where you can use the UI elements to:
+   - Create a new cat.
+   - See all the current cats listed.
+   - Update their rating.
+   - Delete an individual cat from the list.
+
+This frontend can also be accessed from this [S3 Bucket](http://joaquin-bucket.s3-website.eu-north-1.amazonaws.com/) (but only until it is wiped from AWS).
 
 ## Technical Descriptions
+# Backend
+The backend of the application is built using ASP.NET Core and provides a RESTful API with endpoints for managing cat models. It is deployed on AWS using Elastic Beanstalk, which handles the application environment and deployment. The backend interacts with an RDS PostgreSQL database to store and manage cat models. `CatContext` in the backend uses Entity Framework Core and `appsettings` Connection String to communicate and do operations on the RDS database.
+
+# Database
+The database includes a table for storing cat models with fields such as `id`, `name`, `age`, and `rating`. The database operations are managed by `CatContext`.
+
+# Frontend
+The frontend is a UI built with React, providing a user-friendly way to interact with the backend API. It displays two input boxes for a cat's name and age together with a create button to add a new cat to the list. It also displays a list of all cats currently in the database where users can increment or decrement the ratings of each cat and also delete a cat from the list. The frontend dynamically updates graphical elements to reflect changes in the database, creating a responsive and interactive UI. It is deployed on AWS using an S3 bucket configured to host a stati website, and it accesses the backend API hosted on Elastic Beanstalk to update the database.
+
+# Deployment Architecture
+   - Backend: Deployed on AWS Elastic Beanstalk, connected to an RDS PostgreSQL database.
+   - Frontend: Deployed on AWS S3, accessing the backend API on Elastic Beanstalk.
 
 ## References
+[AWS-Day-1, Boolean GitHub Repo](https://github.com/boolean-uk/csharp-cloud-aws-day-1) Instructions on how to deploy a backend + frontend.
+
+[AWS-Day-5, Boolean GitHub Repo](https://github.com/boolean-uk/csharp-cloud-aws-day-5) Instructions on how to structure the `GUIDE.md` and criteria for this exercise.
+
+[Boolean Discord Server](https://discord.com/) Found previous commands on there to create the files necessary for the backend and frontend to work.
+
+[Boolean Zoom Lectures](https://zoom.us/) Utilized various programming languages and tools taught during Nigel's lectures.
