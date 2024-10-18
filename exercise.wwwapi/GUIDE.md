@@ -1,0 +1,2 @@
+﻿# Created a RDS database (PostgreSQL) for the application, and making sure the connection was successful. Adding the connection to my application, and then migrating to make sure the database is populated correctly.
+# Created and configured a Elastic Beanstalk environment to deploy the backend API.
