@@ -10,18 +10,27 @@ namespace cohort_backend.wwwapi.Endpoints
             var userGroup = app.MapGroup("/users");
 
             userGroup.MapGet("/", GetUsers);
+            userGroup.MapGet("/{id}", GetUserById);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public static async Task<IResult> GetUsers(IUserRepository repository)
-        {
-            var users = await repository.GetUsers();
-            if (users != null)
-            {
+        {  
+          return TypedResults.Ok(await repository.GetUsers());
+        }
 
+        [Route("/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public static async Task<IResult> GetUserById(IUserRepository repository, int id)
+        {
+            var user = await repository.GetUserById(id);
+
+            if (user == null) 
+            {
+                return TypedResults.NotFound();
             }
-          return TypedResults.Ok();
+
+            return TypedResults.Ok(user);
         }
     }
 }
