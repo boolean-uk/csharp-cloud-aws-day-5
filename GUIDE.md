@@ -25,7 +25,7 @@ after AWS instance gets removed...) Use these endpoints for accessing data from 
 
 Access Swagger from:
 
-+ ***[/swagger/index.html]***(http://aws-day-5-tvaltn-env.eba-kxmh9vpj.eu-north-1.elasticbeanstalk.com/swagger/index.html)
++ ***[/swagger/index.html](http://aws-day-5-tvaltn-env.eba-kxmh9vpj.eu-north-1.elasticbeanstalk.com/swagger/index.html)*** Swagger
 
 Endpoints:
 
