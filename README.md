@@ -1,4 +1,4 @@
-##
+#
 Our solution is hosted on AWS with Elastic Beanstalk for the backend, a frontend in a S3 bucket, and a neon-db
 The frontend is from this repo:
 https://github.com/George-Alexander-S/react-cohort-dashboard-challenge
