@@ -1,26 +1,71 @@
-**Note: Change any headings in this document**
+# Cinema API Application Guide
 
-# Project Guide
-This is my Cinema API Application that is set up using AWS Services for database, backend and frontend.
+This document outlines the setup and usage of my Cinema API application, which leverages AWS services for the database, backend, and frontend.
 
-## Setup
-The database is set up using AWS RDS for persistent storage.
-It is set up with a appsettings.json file that contains the connection string to the database.
-And migration to the database.
+---
 
-For the backend I have uploaded and deployed the API to AWS Elastic Beanstalk.
-The backend code is complete with the exception of Migrations folder and appsettings.json file.
+## Project Overview
 
-The frontend is set up using AWS S3 for static website hosting.
-The frontend code is complete with the exception of the API URL in the fetch requests and the node_modules folder.
-It is talking to the backend API which is again talking to the database.
+This project consists of a backend API deployed on AWS Elastic Beanstalk, a database hosted on AWS RDS, and a frontend hosted on AWS S3 for static website hosting. The application is designed to manage customers, movies, screenings, and tickets.
 
-## Introduction
-When cloning the repository, if you want to run it locally you will need to do ´´´dotnet restore´´´ and ´´´dotnet build´´´ and ´´´dotnet run´´´ in the backend folder. For the frontend you will need to do ´´´npm install´´´ and ´´´npm run dev´´´ in the frontend folder.
+---
 
-## References
-The backend API is setup according to the following [API Documentation:](https://boolean-uk.github.io/csharp-api-cinema-challenge/extensions)
+## Setup Instructions
 
-Database endpoint: http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com
-Use one of the calls /customers, /movies, /screenings, /tickets to the endpoint
-Example: http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com/customers
+### Database Setup
+
+- **Service**: AWS RDS is used for persistent database storage.
+- **Configuration**: The connection string is specified in the `appsettings.json` file. Database migrations are managed using Entity Framework.
+  
+### Backend Setup
+
+- **Deployment**: The backend API is deployed using AWS Elastic Beanstalk.
+- **Note**: The `Migrations` folder and `appsettings.json` file are excluded from the repository for security reasons.
+
+### Frontend Setup
+
+- **Hosting**: The frontend is hosted on AWS S3 as a static website.
+- **Configuration**: Ensure the correct API URL is provided in the fetch requests. The `node_modules` folder is excluded from the repository.
+
+---
+
+## Running the Application Locally
+
+To run the application locally after cloning the repository:
+
+### Backend
+
+1. Navigate to the `backend` folder.
+2. Run the following commands:
+   ```bash
+   dotnet restore
+   dotnet build
+   dotnet run
+
+### Frontend
+
+1. Navigate to the `frontend` folder.
+2. Run the following commands:
+   ```bash
+   npm install
+   npm audit fix
+   npm run dev
+
+---
+
+## API Documentation and endpoints
+
+The backend API is structured according to the [API Documentation:](https://boolean-uk.github.io/csharp-api-cinema-challenge/extensions)
+
+**Base API Endpoint:**
+```http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com```
+
+Available API Routes:
+- ```/customers```
+- ```/movies```
+- ```/screenings```
+- ```/tickets```
+
+**Example:**
+To retrieve customer data:
+```http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com/customers```
