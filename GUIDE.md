@@ -66,7 +66,7 @@ Now both the skeleton for the backend and frontend should be set up.
    ```bash
    update-database
    ```
-   - If everything was set up correctly you should now be able to connect to your database with `TablePlus` or `Beehive` and see that your `DbSet` items in your DbContext are tables in the database.
+   - If everything was set up correctly you should now be able to connect to your database with `TablePlus` or `Beekeeper` and see that your `DbSet` items in your DbContext are tables in the database.
 
 5. Zip the backend
    - Navigate to your folder `backend.wwwapi` in git bash and run this command:
