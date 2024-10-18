@@ -174,7 +174,7 @@ The backend is written in C# and Deployed using RDS Database + Elastic Beanstalk
 The frontend is written in React (jsx) and Deployed using RDS Database + S3 Bucket.
 
 ## Technical Designs
-# Backend
+### Backend
 The backend can be run using Swagger where you can GET, POST, PUT, and DELETE cat models that are being stored on the RDS Database.
 
 Endpoints are the following:
@@ -185,7 +185,7 @@ Endpoints are the following:
    - [PUT: /cats{id}](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/cats) Updates the rating of an existing cat found on the given `{id}`.
    - [DELETE: /cats{id}](http://joaquin-backend-env.eba-pirw2qwp.eu-north-1.elasticbeanstalk.com/cats) Deletes an existing cat found on the given `{id}`.
 
-# Frontend
+### Frontend
 The frontend can be run using Vite where you can use the UI elements to:
    - Create a new cat.
    - See all the current cats listed.
@@ -195,16 +195,16 @@ The frontend can be run using Vite where you can use the UI elements to:
 This frontend can also be accessed from this [S3 Bucket](http://joaquin-bucket.s3-website.eu-north-1.amazonaws.com/) (but only until it is wiped from AWS).
 
 ## Technical Descriptions
-# Backend
+### Backend
 The backend of the application is built using ASP.NET Core and provides a RESTful API with endpoints for managing cat models. It is deployed on AWS using Elastic Beanstalk, which handles the application environment and deployment. The backend interacts with an RDS PostgreSQL database to store and manage cat models. `CatContext` in the backend uses Entity Framework Core and `appsettings` Connection String to communicate and do operations on the RDS database.
 
-# Database
+### Database
 The database includes a table for storing cat models with fields such as `id`, `name`, `age`, and `rating`. The database operations are managed by `CatContext`.
 
-# Frontend
+### Frontend
 The frontend is a UI built with React, providing a user-friendly way to interact with the backend API. It displays two input boxes for a cat's name and age together with a create button to add a new cat to the list. It also displays a list of all cats currently in the database where users can increment or decrement the ratings of each cat and also delete a cat from the list. The frontend dynamically updates graphical elements to reflect changes in the database, creating a responsive and interactive UI. It is deployed on AWS using an S3 bucket configured to host a stati website, and it accesses the backend API hosted on Elastic Beanstalk to update the database.
 
-# Deployment Architecture
+### Deployment Architecture
    - Backend: Deployed on AWS Elastic Beanstalk, connected to an RDS PostgreSQL database.
    - Frontend: Deployed on AWS S3, accessing the backend API on Elastic Beanstalk.
 
