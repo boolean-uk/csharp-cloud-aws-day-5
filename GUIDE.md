@@ -6,12 +6,26 @@ Backend running on Elastic Beanstalk, with an RDS database, with a SQS/SNS queue
 Follow the references for hosting this application on Elastic Beanstalk, for creating an RDS database,
 and for setting up SQS/SNS.
 
+Start off with setting up the SNS Topic and SQS Queue, and replace the _queueUrl and _topicArn variables
+in Endpoints/PizzaShopApi.cs.
+
+Then, set up an RDS database, add the credentials for the db in an appsettings.json file, 
+and migrate to the db with **update-database** in Packet Manager Console in VS.
+
+Then follow the steps to publish this application on Elastic Beanstalk.
+
 ## Introduction
-Backend PizzaShop API written in C#/.NET (Frontend TBA).
+Backend PizzaShop API written in C#/.NET. Frontend solution is currently just using Swagger for
+accessing the data. You could write your own frontend for this, and host it on s3 bucket
+(reference in same repo as Elastic Beanstalk/RDS). Just use the elastic beanstalk link as an API!
 
 ## Technical Designs
 Users of the PizzaShop API can create and view customers, pizzas and orders. (Links won't work
-after AWS instance gets removed...)
+after AWS instance gets removed...) Use these endpoints for accessing data from your own hosted Elastic Beanstalk instance.
+
+Access Swagger from:
+
++ ***[/swagger/index.html]***(http://aws-day-5-tvaltn-env.eba-kxmh9vpj.eu-north-1.elasticbeanstalk.com/swagger/index.html)
 
 Endpoints:
 
