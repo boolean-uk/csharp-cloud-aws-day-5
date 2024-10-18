@@ -2,5 +2,8 @@
 {
     public class CommentDTO
     {
+        public int PostId { get; set; }
+        public string Content { get; set; }
+        public int ContactId { get; set; }
     }
 }
