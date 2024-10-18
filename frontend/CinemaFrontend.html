@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Frontend</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #333; }
+        form { margin-top: 20px; }
+        input, textarea { margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Simple Cinema Frontend!</h1>
+    
+    <h2>Fetch Data from API</h2>
+    <button id="fetchData">Fetch Data</button>
+    <pre id="data"></pre>
+
+    <h2>Add Movie</h2>
+    <form id="movieForm">
+        <input type="text" id="title" placeholder="Title" required />
+        <input type="text" id="rating" placeholder="Rating" required />
+        <textarea id="description" placeholder="Description" required></textarea>
+        <input type="number" id="runtimeMins" placeholder="Run Time (minutes)" min="0" required />
+        
+        <h3>Screening Details</h3>
+        <input type="number" id="screenNumber" placeholder="Screen Number" min="0" required />
+        <input type="number" id="capacity" placeholder="Capacity" min="0" required />
+        <input type="datetime-local" id="startsAt" required />
+    
+        <button type="submit">Submit Movie</button>
+    </form>
+    
+
+    <script>
+        document.getElementById('fetchData').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://13.60.228.100:5000/movies'); 
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                document.getElementById('data').innerText = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('data').innerText = 'Error: ' + error.message;
+            }
+        });
+
+        document.getElementById('movieForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            const movieData = {
+        title: document.getElementById('title').value,
+        rating: document.getElementById('rating').value,
+        description: document.getElementById('description').value,
+        runtimeMins: parseInt(document.getElementById('runtimeMins').value),
+        screenings: [
+            {
+                screenNumber: parseInt(document.getElementById('screenNumber').value),
+                capacity: parseInt(document.getElementById('capacity').value),
+                startsAt: new Date(document.getElementById('startsAt').value).toISOString()
+            }
+        ]
+    };
+
+            try {
+                const response = await fetch('http://13.60.228.100:5000/movies', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(movieData)
+                });
+
+                if (!response.ok) throw new Error('Failed to submit movie');
+                const result = await response.json();
+                document.getElementById('data').innerText = JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('data').innerText = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
