@@ -1,0 +1,5 @@
+-Start with an ready backend application
+-Connect it to a database, (i used neon.db)
+-Ensure that you have appsetting.json configured correctly
+-Create an application in beanstalk
+-Create an environment in beanstalk
