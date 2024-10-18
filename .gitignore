@@ -396,3 +396,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
+/exercise.pizzashopapi/appsettings.json
+/exercise.pizzashopapi/appsettings.Development.json
+/exercise.pizzashopapi/out
