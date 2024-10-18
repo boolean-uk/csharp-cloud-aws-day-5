@@ -12,9 +12,9 @@ namespace cohort_backend.wwwapi.Repository
         Task<Post> GetPostById(int postId);
 
         // COMMENTS
-        Task<Comment> CreateCommentInPost(Comment entity, int postId);
+        Task<Comment> CreateComment(Comment entity);
         Task<IEnumerable<Comment>> GetAllCommentsInPost(int postId);
-        Task<Comment> UpdateCommentInPost(Comment entity, int postId);
-        Task<Comment> DeleteCommentInPost(int commentId, int postId);
+        Task<Comment> UpdateComment(Comment entity, int commentId);
+        Task<Comment> DeleteComment(int commentId);
     }
 }
