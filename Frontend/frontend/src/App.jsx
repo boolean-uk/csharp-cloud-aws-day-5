@@ -113,11 +113,11 @@ function App() {
         Fetch Status: {isFetching ? "fetching" : "not fetching"}
       </p>
 
-      <h2>Create Task</h2>
+      <h2>Create Dog</h2>
       <div>
         <input
           type="text"
-          placeholder="New task"
+          placeholder="New Dog"
           onChange={handleNewTaskChanged}
           value={newTaskTitle}
         />
@@ -125,7 +125,7 @@ function App() {
           Create
         </button>
       </div>
-      <h2>Tasks</h2>
+      <h2>Dogs</h2>
       <ul>
         {dogs.map((dog) => (
           <li
