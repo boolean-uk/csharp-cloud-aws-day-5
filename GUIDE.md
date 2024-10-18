@@ -167,11 +167,11 @@ Now both the skeleton for the backend and frontend should be set up.
        - `Bucket website endpoint` contains the URL for your deployed Frontend. 
 
 ## Introduction
-Backend + Frontend Cat App Where users can add new cats to the list of cats and then update the rating for each cat.
+Backend + Frontend Cat App Where users can add new cats to the list of cats and then update the rating for each cat or delete them.
 
 The backend is written in C# and Deployed using RDS Database + Elastic Beanstalk.
 
-The frontend is written in React (jsx) and Deployed using RDS Database + S3 Bucket.
+The frontend is written in React (jsx) and Deployed using Elastic Beanstalk Environment + S3 Bucket.
 
 ## Technical Designs
 ### Backend
