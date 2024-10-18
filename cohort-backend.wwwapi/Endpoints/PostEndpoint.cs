@@ -18,10 +18,10 @@ namespace cohort_backend.wwwapi.Endpoints
 
             postGroup.MapPost("/", CreateAPost);
             postGroup.MapGet("/", GetAllPosts);
-            postGroup.MapGet("/{id}", GetAPost); 
+            postGroup.MapGet("/{postId}", GetAPost); 
 
-            postGroup.MapPost("/{id}/comments", CreateAComment);
-            postGroup.MapGet("/{id}/comments", GetAllComments);
+            postGroup.MapPost("/{postId}/comments", CreateAComment);
+            postGroup.MapGet("/{postId}/comments", GetAllComments);
         }
 
 
@@ -82,9 +82,9 @@ namespace cohort_backend.wwwapi.Endpoints
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public static async Task<IResult> GetAPost(IPostRepository repository, int id)
+        public static async Task<IResult> GetAPost(IPostRepository repository, int postId)
         {
-           var post = await repository.GetPostById(id);
+           var post = await repository.GetPostById(postId);
 
             PostDTO postDTO = new PostDTO()
             {
@@ -131,10 +131,10 @@ namespace cohort_backend.wwwapi.Endpoints
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public static async Task<IResult> GetAllComments(IPostRepository repository, int postid)
+        public static async Task<IResult> GetAllComments(IPostRepository repository, int postId)
         {
             GetAllResponse<CommentDTO> response = new GetAllResponse<CommentDTO>();
-            var results = await repository.GetAllCommentsInPost(postid);
+            var results = await repository.GetAllCommentsInPost(postId);
 
             foreach (var comment in results)
             {
