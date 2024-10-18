@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") // Allow your frontend's URL
+            policy.WithOrigins("http://georgebucketboolean.s3-website.eu-north-1.amazonaws.com") // Allow your frontend's URL
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
