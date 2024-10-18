@@ -64,6 +64,7 @@ namespace cohort_backend.wwwapi.Endpoints
             {
                 PostDTO postDTO = new PostDTO()
                 {
+                    Id = post.Id,
                     Title = post.Title,
                     Content = post.Content,
                     ContactId = post.UserId
@@ -87,6 +88,7 @@ namespace cohort_backend.wwwapi.Endpoints
 
             PostDTO postDTO = new PostDTO()
             {
+                Id = post.Id,
                 Title = post.Title,
                 Content = post.Content,
                 ContactId = post.UserId
