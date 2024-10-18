@@ -14,17 +14,14 @@ namespace cohort_backend.wwwapi.Endpoints
     {
         public static void ConfigurePostEndpoint(this WebApplication app)
         {
-            var postGroup = app.MapGroup("/post");
+            var postGroup = app.MapGroup("/posts");
 
-            app.MapPost("/", CreateAPost);
-            app.MapGet("/", GetAllPosts);
-            app.MapGet("/{id}", GetAPost); 
-            
-            app.MapPost("/{id}/comment", CreateAComment);
-            app.MapGet("/{id}/comment", GetAllComments);
-           
+            postGroup.MapPost("/", CreateAPost);
+            postGroup.MapGet("/", GetAllPosts);
+            postGroup.MapGet("/{id}", GetAPost); 
 
-
+            postGroup.MapPost("/{id}/comments", CreateAComment);
+            postGroup.MapGet("/{id}/comments", GetAllComments);
         }
 
 

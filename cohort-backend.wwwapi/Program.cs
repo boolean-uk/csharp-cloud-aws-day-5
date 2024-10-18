@@ -12,8 +12,6 @@ builder.Services.AddDbContext<DatabaseContext>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +25,5 @@ app.UseHttpsRedirection();
 
 app.ConfigurePostEndpoint();
 app.ConfigureUserEndpoint();
-
 
 app.Run();

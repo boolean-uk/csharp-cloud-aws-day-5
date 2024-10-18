@@ -78,7 +78,7 @@ namespace cohort_backend.wwwapi.Repository
 
         public async Task<IEnumerable<Comment>> GetAllCommentsInPost(int postId)
         {
-            return await _db.Comments.ToListAsync();
+            return await _db.Comments.Where(p => p.PostId == postId).ToListAsync();
         }
 
         public async Task<Comment> UpdateComment(Comment entity, int commentId)
