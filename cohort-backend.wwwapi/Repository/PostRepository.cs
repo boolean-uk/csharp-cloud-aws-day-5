@@ -16,47 +16,77 @@ namespace cohort_backend.wwwapi.Repository
         // POSTS
         public async Task<Post> CreatePost(Post entity)
         {
-            throw new NotImplementedException();
+            _db.Posts.Add(entity);
+            await _db.SaveChangesAsync();
+
+            return entity;
         }
 
         public async Task<IEnumerable<Post>> GetAllPosts()
         {
-            return await _db.Post.ToListAsync();
-
+            return await _db.Posts.ToListAsync();
         }
 
         public async Task<Post> UpdatePostById(Post entity, int postId)
         {
-            throw new NotImplementedException();
+            var existingEntity = await _db.Posts.FirstOrDefaultAsync(p => p.Id == postId);
+
+            if (entity == null)
+            {
+                throw new NotImplementedException($"Post with id {postId} does not exist.");
+            }
+
+            _db.Posts.Update(entity);
+            await _db.SaveChangesAsync();
+
+            return entity;
         }
 
         public async Task<Post> DeletePostById(int postId)
         {
-            throw new NotImplementedException();
+            var entity = await _db.Posts.FirstOrDefaultAsync(p => p.Id == postId);
+
+            if (entity == null) { 
+                throw new NotImplementedException($"Post with id {postId} does not exist.");
+            }
+
+            _db.Posts.Remove(entity);
+            await _db.SaveChangesAsync();
+
+            return entity;
         }
 
         public async Task<Post> GetPostById(int postId)
         {
-            throw new NotImplementedException();
+            var entity = await _db.Posts.FirstOrDefaultAsync(p => p.Id == postId);
+
+            if (entity == null) { 
+                throw new KeyNotFoundException($"Post with id {postId} does not exist.");
+            }
+
+            return entity;
         }
 
         // COMMENTS
-        public async Task<Comment> CreateCommentInPost(Comment entity, int postId)
+        public async Task<Comment> CreateComment(Comment entity)
         {
-            throw new NotImplementedException();
+            _db.Comments.Add(entity);
+            await _db.SaveChangesAsync();
+
+            return entity;
         }
 
         public async Task<IEnumerable<Comment>> GetAllCommentsInPost(int postId)
         {
-            throw new NotImplementedException();
+            return await _db.Comments.ToListAsync();
         }
 
-        public async Task<Comment> UpdateCommentInPost(Comment entity, int postId)
+        public async Task<Comment> UpdateComment(Comment entity, int commentId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Comment> DeleteCommentInPost(int commentId, int postId)
+        public async Task<Comment> DeleteComment(int commentId)
         {
             throw new NotImplementedException();
         }

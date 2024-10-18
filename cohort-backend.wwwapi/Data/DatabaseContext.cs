@@ -1,6 +1,3 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Emit;
-using cohort_backend.wwwapi.Models;
 ﻿using cohort_backend.wwwapi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,9 +44,8 @@ namespace cohort_backend.wwwapi.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        //public DbSet<Post> Post { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Post> Post { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
     }
 }
