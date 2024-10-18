@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../config';
 
@@ -22,8 +22,8 @@ function Customers() {
     <div>
       <h1>Customers</h1>
       <ul>
-        {customers.map((customer) => (
-          <li key={customer.id}>{customer.name}</li>
+        {customers.map((c) => (
+          <li key={c.id}>{c.name}</li>
         ))}
       </ul>
     </div>

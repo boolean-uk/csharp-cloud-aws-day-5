@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { API_URL } from '../config';
 
 function Screenings() {
   const [screenings, setScreenings] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    if (selectedMovie) {
-      fetchScreenings(selectedMovie);
-    }
-  }, [selectedMovie]);
+    fetchScreenings();
+  }, []);
 
-  const fetchScreenings = async (movieId) => {
+  const fetchScreenings = async () => {
     try {
-      const response = await axios.get(`${API_URL}/movies/${movieId}/screenings`);
-      setScreenings(response.data.data);
+      const response = await fetch(`${API_URL}/screenings` )
+      const jsonData = await response.json()
+      setScreenings(jsonData.data);
     } catch (error) {
       console.error('Error fetching screenings:', error);
     }
@@ -24,16 +21,9 @@ function Screenings() {
   return (
     <div>
       <h1>Screenings</h1>
-      <input
-        type="number"
-        placeholder="Enter movie ID"
-        onChange={(e) => setSelectedMovie(e.target.value)}
-      />
       <ul>
-        {screenings.map((screening) => (
-          <li key={screening.id}>
-            Screen {screening.screenNumber} - {new Date(screening.startsAt).toLocaleString()}
-          </li>
+        {screenings.map((s) => (
+          <li key={s.id}>Showing {s.movieTitle} at {s.startsAt} - {s.numOfTicketsSold} of {s.capacity} tickets sold.</li>
         ))}
       </ul>
     </div>

@@ -1,6 +1,7 @@
 # Cinema API Application Guide
 
 This document outlines the setup and usage of my Cinema API application, which leverages AWS services for the database, backend, and frontend.
+Frontend url is [here](http://aws-jonas-halvorsen-day-5.s3-website.eu-north-1.amazonaws.com/).
 
 ---
 

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { API_URL } from '../config';
 
 function Movies() {
@@ -11,13 +10,8 @@ function Movies() {
 
   const fetchMovies = async () => {
     try {
-      const moviesUrl = `${API_URL}/movies`
-      console.log(moviesUrl)
-      
-      const response = await fetch(moviesUrl)
-      console.log(response)
+      const response = await fetch(`${API_URL}/movies` )
       const jsonData = await response.json()
-      console.log(jsonData)
       setMovies(jsonData.data);
     } catch (error) {
       console.error('Error fetching movies:', error);
@@ -28,8 +22,8 @@ function Movies() {
     <div>
       <h1>Movies</h1>
       <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+        {movies.map((m) => (
+          <li key={m.id}>{m.title}</li>
         ))}
       </ul>
     </div>
