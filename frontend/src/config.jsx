@@ -1,0 +1,1 @@
+export const API_URL = 'http://aws-day-5-jonas-api-env.eba-862qwvjc.eu-north-1.elasticbeanstalk.com';
