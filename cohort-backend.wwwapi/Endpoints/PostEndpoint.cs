@@ -111,7 +111,7 @@ namespace cohort_backend.wwwapi.Endpoints
 
             Comment comment = await repository.CreateComment(new Comment()
             {
-                PostId= model.Id,
+                PostId= model.PostId,
                 Content =  model.Content,
                 UserId = model.ContactId
             });
