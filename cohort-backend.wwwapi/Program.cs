@@ -1,4 +1,6 @@
 using cohort_backend.wwwapi.Data;
+using cohort_backend.wwwapi.Endpoints;
+using cohort_backend.wwwapi.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>();
+
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 var app = builder.Build();
 
@@ -18,5 +22,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.ConfigurePostEndpoint();
 
 app.Run();

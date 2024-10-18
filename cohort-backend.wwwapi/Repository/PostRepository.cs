@@ -1,5 +1,6 @@
 ﻿using cohort_backend.wwwapi.Data;
 using cohort_backend.wwwapi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace cohort_backend.wwwapi.Repository
 {
@@ -20,7 +21,8 @@ namespace cohort_backend.wwwapi.Repository
 
         public async Task<IEnumerable<Post>> GetAllPosts()
         {
-            throw new NotImplementedException();
+            return await _db.Post.ToListAsync();
+
         }
 
         public async Task<Post> UpdatePostById(Post entity, int postId)
